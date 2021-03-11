@@ -4,6 +4,7 @@ import org.sang.bean.RespBean;
 import org.sang.bean.User;
 import org.sang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,9 @@ public class LoginRegController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @RequestMapping("/login_error")
     public RespBean loginError() {
@@ -51,5 +55,12 @@ public class LoginRegController {
             //失败
             return new RespBean("error", "注册失败!");
         }
+    }
+
+    @RequestMapping("/hello.html")
+    public RespBean hello() {
+        String encode = passwordEncoder.encode("12345");
+
+        return new RespBean("error", encode);
     }
 }
