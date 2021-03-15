@@ -58,9 +58,12 @@ public class LoginRegController {
     }
 
     @RequestMapping("/hello.html")
-    public RespBean hello() {
-        String encode = passwordEncoder.encode("12345");
-
+    public RespBean hello(String password,String code) {
+        //明文：vueblog@2021 密文：24198ec9992b1109b312d3dbb9bfe1fa
+        if (code == null || !"vueblog@2021".equals(code)) {
+            return new RespBean("error", "wrong code!");
+        }
+        String encode = passwordEncoder.encode(password);
         return new RespBean("error", encode);
     }
 }

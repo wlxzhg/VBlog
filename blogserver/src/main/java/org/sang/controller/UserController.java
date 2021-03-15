@@ -39,7 +39,8 @@ public class UserController {
     public Boolean isAdmin() {
         List<GrantedAuthority> authorities = Util.getCurrentUser().getAuthorities();
         for (GrantedAuthority authority : authorities) {
-            if (authority.getAuthority().contains("超级管理员")) {
+            //此处的"admin"对应数据库roles_user中的角色名称
+            if (authority.getAuthority().contains("admin")) {
                 return true;
             }
         }

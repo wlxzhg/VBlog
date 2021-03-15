@@ -26,8 +26,8 @@
         },
         checked: true,
         loginForm: {
-          username: 'the4unit',
-          password: '12345'
+          username: '',
+          password: ''
         },
         loading: false
       }
